@@ -1,5 +1,3 @@
-//src/componentes/Card/index.tsx
-
 import React from "react"
 
 import './estilos.css'
