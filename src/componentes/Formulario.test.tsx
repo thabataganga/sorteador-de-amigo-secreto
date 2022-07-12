@@ -10,7 +10,7 @@ describe("Formulario.tsx", () => {
         <Formulario />
       </RecoilRoot>)
     //find input no DOM
-    const input = screen.getByPlaceholderText('Nome do participante')
+    const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
     // find botao
     const botao = screen.getByRole('button')
     // garantir o input no doc
@@ -25,7 +25,7 @@ describe("Formulario.tsx", () => {
         <Formulario />
       </RecoilRoot>)
     //find input no DOM
-    const input = screen.getByPlaceholderText('Nome do participante')
+    const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
     // find botao
     const botao = screen.getByRole('button')
 
@@ -50,7 +50,7 @@ describe("Formulario.tsx", () => {
         <Formulario />
       </RecoilRoot>)
     //find input no DOM
-    const input = screen.getByPlaceholderText('Nome do participante')
+    const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
     // find botao
     const botao = screen.getByRole('button')
 
@@ -84,7 +84,7 @@ describe("Formulario.tsx", () => {
         <Formulario />
       </RecoilRoot>)
     //find input no DOM
-    const input = screen.getByPlaceholderText('Nome do participante')
+    const input = screen.getByPlaceholderText('Insira os nomes dos participantes')
     // find botao
     const botao = screen.getByRole('button')
 

@@ -1,9 +1,10 @@
 import { useRef, useState } from "react"
 import { useAdicionarParticipante } from "../state/hook/useAdicionarParticipante"
 import { useMensagemDeErro } from "../state/hook/useMensagemDeErro"
-import Card from "./Card"
 
-export default function Formulario() {
+import './Formulario.css'
+
+const Formulario = () => {
 
   const [nome, setNome] = useState('')
 
@@ -13,29 +14,26 @@ export default function Formulario() {
 
   const mensagemDeErro = useMensagemDeErro()
 
-  function adicionarParticipante(evento: React.FormEvent<HTMLFormElement>) {
+  const adicionarParticipante = (evento: React.FormEvent<HTMLFormElement>) => {
     evento.preventDefault()
     adicionarNaLista(nome)
     setNome('')
     inputRef.current?.focus()
   }
 
-  return (
-    <Card>
-      <form onSubmit={adicionarParticipante}>
+  return (<form onSubmit={adicionarParticipante}>
+    <div className="grupo-input-btn">
+      <input
+        ref={inputRef}
+        value={nome}
+        onChange={evento => setNome(evento.target.value)}
+        type="text"
+        placeholder="Insira os nomes dos participantes"
+      />
+      <button disabled={!nome}>Adicionar</button>
+    </div>
+    {mensagemDeErro && <p className="alerta erro" role="alert">{mensagemDeErro}</p>}
+  </form>)
+}
 
-        <input
-          id="nome"
-          onChange={evento => setNome(evento.target.value)}
-          placeholder="Nome do participante"
-          type="text"
-          value={nome}
-          ref={inputRef}
-        />
-        <button disabled={!nome}>Enviar</button>
-        {mensagemDeErro && <p role="alert">{mensagemDeErro}</p>}
-      </form>
-    </Card>
-
-  )
-};
+export default Formulario
