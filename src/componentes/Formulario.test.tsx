@@ -4,7 +4,10 @@ import { RecoilRoot } from "recoil";
 import Formulario from "./Formulario";
 
 test('quando o input está vazio novos usuarios não podem ser adicionados', () => {
-  render(<Formulario />)
+  render(
+    <RecoilRoot>
+      <Formulario />
+    </RecoilRoot>)
   //find input no DOM
   const input = screen.getByPlaceholderText('Nome do participante')
   // find botao
@@ -38,4 +41,37 @@ test('adicionar um participante quando um nome for preenchido', () => {
   expect(input).toHaveFocus()
   // input limpo
   expect(input).toHaveValue("")
+})
+
+test('nomes únicos na lista', () => {
+  render(
+    <RecoilRoot>
+      <Formulario />
+    </RecoilRoot>)
+  //find input no DOM
+  const input = screen.getByPlaceholderText('Nome do participante')
+  // find botao
+  const botao = screen.getByRole('button')
+
+  //inserir um valor no input
+  fireEvent.change(input, {
+    target: {
+      value: 'Ana Catarina'
+    }
+  })
+  // clicar no botao submeter
+  fireEvent.click(botao)
+
+  //inserir um valor no input
+  fireEvent.change(input, {
+    target: {
+      value: 'Ana Catarina'
+    }
+  })
+  // clicar no botao submeter
+  fireEvent.click(botao)
+
+  const mensagemDeErro = screen.getByRole('alert')
+
+  expect(mensagemDeErro.textContent).toBe('Nomes não podem ser duplicados')
 })
