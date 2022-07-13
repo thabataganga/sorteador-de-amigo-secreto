@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useListaDeParticipantes } from "../state/hook/useListaDeParticipante"
 import { useResultadoSorteio } from "../state/hook/useResultadoSorteio"
+import './Sorteio.css'
+
 
 export default function Sorteio() {
 
@@ -19,7 +21,8 @@ export default function Sorteio() {
   }
 
   return (
-    <section>
+    <section className="sorteio">
+      <h2>Quem vai tirar o papelzinho?</h2>
       <form onSubmit={Sortear}>
         <select
           required
@@ -32,9 +35,13 @@ export default function Sorteio() {
           {participantes.map(participante =>
             <option key={participante}>{participante}</option>)}
         </select>
-        <button>Sortear</button>
+        <p>Clique em em sortear para ver quem é seu amigo secreto!</p>
+        <button className="botao-sortear">Sortear</button>
       </ form>
-      {amigoSecreto && <p role="alert">{amigoSecreto}</p>}
+      {amigoSecreto && <p className="resultado" role="alert">{amigoSecreto}</p>}
+      <footer className="sorteio">
+        <img src="/imagens/aviao.png" className="aviao" alt="Um desenho de um avião de papel" />
+      </footer>
     </section>
   )
 };
