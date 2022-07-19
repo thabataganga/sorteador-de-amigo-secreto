@@ -5,6 +5,7 @@ import Configuracao from './pages/Configuracao';
 import Sorteio from './pages/Sorteio';
 
 function App() {
+  console.log("teste")
   return (
     <BrowserRouter>
       <RecoilRoot>
